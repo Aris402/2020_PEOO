@@ -1,0 +1,11 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite um valor monetário:");
+    string[] valor = Console.ReadLine().Split(",");
+    int v1 = int.Parse(valor[0]);
+    int v2 = int.Parse(valor[1]);
+    Console.WriteLine($"{v1} reais e {v2} centavos");
+  }
+}
