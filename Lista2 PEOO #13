@@ -1,0 +1,29 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite dez valores inteiros");
+    string[] valores = Console.ReadLine().Split(' ');
+    int v1 = int.Parse(valores[0]);
+    int v2 = int.Parse(valores[1]);
+    int v3 = int.Parse(valores[2]);
+    int v4 = int.Parse(valores[3]);
+    int v5 = int.Parse(valores[4]);
+    int v6 = int.Parse(valores[5]);
+    int v7 = int.Parse(valores[6]);
+    int v8 = int.Parse(valores[7]);
+    int v9 = int.Parse(valores[8]);
+    int v10 = int.Parse(valores[9]);
+    int menor = Math.Min(v1, Math.Min(v2,v3));
+    int menor2 = Math.Min(menor, Math.Min(v4, v5));
+    int menor3 = Math.Min(menor2, Math.Min(v6, v7));
+    int menor4 = Math.Min(menor3, Math.Min(v8, v9));
+    int maior = Math.Max(v1, Math.Max(v2,v3));
+    int maior2 = Math.Max(maior, Math.Max(v4, v5));
+    int maior3 = Math.Max(maior2, Math.Max(v6, v7));
+    int maior4 = Math.Max(maior3, Math.Max(v8, v9));
+    if (v10 < menor4) menor4 = v10;
+    if (v10 > maior4) maior4 = v10;
+    Console.WriteLine($"O maior valor é {maior4} e o menor {menor4}");
+  }
+}
