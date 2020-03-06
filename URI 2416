@@ -1,0 +1,11 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    string[] valores = Console.ReadLine().Split(' ');
+    int metros = int.Parse(valores[0]);
+    int termino = int.Parse(valores[1]);
+    int resto = metros % termino;
+    Console.WriteLine($"{resto}");
+  }
+}
