@@ -1,0 +1,13 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int dias = int.Parse(Console.ReadLine());
+    int ano = dias/365;
+    int mes = (dias % 365)/30;
+    int days = (dias % 365) % 30;
+    Console.WriteLine($"{ano} ano(s)");
+    Console.WriteLine($"{mes} mês(es)");
+    Console.WriteLine($"{days} dia(s)");
+  }
+}
