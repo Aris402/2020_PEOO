@@ -1,0 +1,19 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite o primeiro horário no formato hh:mm");
+    string[] horario1 = Console.ReadLine().Split(":");
+    int hora = int.Parse(horario1[0]);
+    int hora2 = int.Parse(horario1[1]);
+    Console.WriteLine("Digite o segundo horário no formato hh:mm");
+    string[] horario2 = Console.ReadLine().Split(":");
+    int hora3 = int.Parse(horario2[0]);
+    int hora4 = int.Parse(horario2[1]);
+    int soma1 = hora2 + hora4;
+    int soma2 = hora + hora3;
+    if (soma1 >= 60) soma2 = soma2 + 1;
+    if (soma1 >= 60) soma1 = soma1 - 60;
+    Console.WriteLine($"{soma2}:{soma1}");
+  }
+}
