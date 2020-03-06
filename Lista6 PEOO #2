@@ -1,0 +1,9 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Mostrar os inteiros de 1 a 10 em ordem crescente.");
+    for(int n = 10; n >= 1; n--)
+        Console.Write($"{n} ");
+  }
+}
