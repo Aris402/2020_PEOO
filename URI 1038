@@ -1,0 +1,24 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    double Cq = 4.00;
+    double Xs = 4.50;
+    double Xb = 5.00;
+    double Ts = 2.00;
+    double refri = 1.50;
+    string[] numeros = Console.ReadLine().Split();
+    double code = double.Parse(numeros[0]);
+    double quant = double.Parse(numeros[1]);
+    if (code == 1)
+        Console.WriteLine($"Total: R${Math.Round(Cq * quant, 2)}" + 0);
+    if (code == 2)
+        Console.WriteLine($"Total: R${Math.Round(Xs * quant, 2)}" + 0);
+    if (code == 3)
+        Console.WriteLine($"Total: R${Math.Round(Xb * quant, 2)}" + 0);
+    if (code == 4)
+        Console.WriteLine($"Total: R${Math.Round(Ts * quant, 2)}" + 0);
+    if (code == 5)
+        Console.WriteLine($"Total: R${Math.Round(refri * quant, 2)}" + 0);
+  }
+}
