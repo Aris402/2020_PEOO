@@ -1,0 +1,11 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    string[] naturais = Console.ReadLine().Split(' ');
+    int a = int.Parse(naturais[0]);
+    int b = int.Parse(naturais[1]);
+    int soma = (a + b) * b/2;
+    Console.WriteLine($"{soma}");
+  }
+}
