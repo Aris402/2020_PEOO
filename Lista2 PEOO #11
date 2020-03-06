@@ -1,0 +1,25 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite uma data no formato dd/mm/aaaa");
+    string[] data = Console.ReadLine().Split("/");
+    int dia = int.Parse(data[0]);
+    int mes = int.Parse(data[1]);
+    int ano = int.Parse(data[2]);
+    switch(mes) {
+      case 1: Console.WriteLine($"{dia} de janeiro de {ano}"); break;
+      case 2: Console.WriteLine($"{dia} de fevereiro de {ano}"); break;
+      case 3: Console.WriteLine($"{dia} de março de {ano}"); break;
+      case 4: Console.WriteLine($"{dia} de abril de {ano}"); break;
+      case 5: Console.WriteLine($"{dia} de maio de {ano}"); break;
+      case 6: Console.WriteLine($"{dia} de junho de {ano}"); break;
+      case 7: Console.WriteLine($"{dia} de julho de {ano}"); break;
+      case 8: Console.WriteLine($"{dia} de agosto de {ano}"); break;
+      case 9: Console.WriteLine($"{dia} de setembro de {ano}"); break;
+      case 10: Console.WriteLine($"{dia} de outubro de {ano}"); break;
+      case 11: Console.WriteLine($"{dia} de novembro de {ano}"); break;
+      case 12: Console.WriteLine($"{dia} de dezembro de {ano}"); break;
+    }
+  } 
+}
