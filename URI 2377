@@ -1,0 +1,16 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    string[] valores1 = Console.ReadLine().Split(" ");
+    int L = int.Parse(valores1[0]);
+    int D = int.Parse(valores1[1]);
+    string[] valores2 = Console.ReadLine().Split(" ");
+    int K = int.Parse(valores2[0]);
+    int P = int.Parse(valores2[1]);
+    int pedagios = L/D * P;
+    int km = K * L;
+    int total = pedagios + km;
+    Console.WriteLine($"{total}");
+  }
+}
