@@ -1,0 +1,11 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    string[] valores = Console.ReadLine().Split(' ');
+    int lados = int.Parse(valores[0]);
+    int comprimento = int.Parse(valores[1]);
+    int perímetro = lados * comprimento;
+    Console.WriteLine($"{perímetro}");
+  }
+}
