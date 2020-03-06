@@ -1,0 +1,14 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Há quantos anos você fuma?");
+    int anos = int.Parse(Console.ReadLine());
+    Console.WriteLine("Quantos cigarros por dia?");
+    int fumodias = int.Parse(Console.ReadLine());
+    Console.WriteLine("Qual o preço da carteira de cigarros?");
+    double carteira = double.Parse(Console.ReadLine());
+    double gasto = (((anos * 365) * fumodias)/20) * carteira;
+    Console.WriteLine($"Total gasto = R$ {gasto}");
+  }
+}
