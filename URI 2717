@@ -1,0 +1,14 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int time = int.Parse(Console.ReadLine());
+    string[] minutes = Console.ReadLine().Split(" ");
+    int min1 = int.Parse(minutes[0]);
+    int min2 = int.Parse(minutes[1]);
+    if (min1 + min2 <= time)
+        Console.WriteLine("Farei Hoje!");
+    else
+        Console.WriteLine("Deixa para amanha!");
+  }
+}
