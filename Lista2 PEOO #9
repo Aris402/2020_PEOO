@@ -1,0 +1,12 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite o horário no formato hh:mm");
+    string[] horario = Console.ReadLine().Split(":");
+    int h1 = int.Parse(horario[0]);
+    int h2 = int.Parse(horario[1]);
+    int graus = (11 * h2 - 60 * h1)/2;
+    Console.WriteLine($"Menor ângulo entre os ponteiros : {graus} graus");
+  }
+}
