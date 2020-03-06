@@ -1,0 +1,10 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+  int expectativa = int.Parse(Console.ReadLine());
+  int realidade = int.Parse(Console.ReadLine());
+  int diferença = expectativa - realidade;
+  Console.WriteLine($"{diferença}");
+  }
+}
