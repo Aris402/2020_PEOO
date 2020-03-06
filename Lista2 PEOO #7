@@ -1,0 +1,15 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine ("Digite os coeficientes a, b, e c de uma equação do II grau");
+    double a = double.Parse(Console.ReadLine());
+    double b = double.Parse(Console.ReadLine());
+    double c = double.Parse(Console.ReadLine());
+    double delta = (b * b) - (4 * a * c);
+    double xl = ((-1 * b) + Math.Sqrt(delta))/2 * a;
+    double x2l = ((-1 * b) - Math.Sqrt(delta))/2 * a;
+    if (delta >= 0) Console.WriteLine($"As raízes são {xl} e {x2l}");
+    else Console.WriteLine("impossível calcular.");
+  }
+}
