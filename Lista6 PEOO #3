@@ -1,0 +1,13 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int m = -1;
+    for(int n = 1;n <= 10 && m >= -10;n++, m--) {
+      if(n % 2 == 0)
+        Console.Write($"{m} ");
+      else
+        Console.Write($"{n} ");
+    }
+  }
+}
