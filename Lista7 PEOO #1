@@ -1,0 +1,14 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite o nome do estado:");
+    string estado = Console.ReadLine();
+    Console.WriteLine("Digite o número de habitantes:");
+    int hab = int.Parse(Console.ReadLine());
+    Console.WriteLine("Digite a área do estado em Km²:");
+    double area = double.Parse(Console.ReadLine());
+    double ha = (hab/area) * 1000;
+    Console.WriteLine("A densidade demográfica do {0} é {1:0.0} hab/Km²", estado, ha);
+  }
+}
