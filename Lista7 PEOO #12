@@ -1,0 +1,17 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite a placa do carro");
+    string placa = Console.ReadLine();
+    int bar = placa.IndexOf('-');
+    string plac = placa.Substring(bar + 4);
+    switch (plac) {
+      case "1": case "2": Console.WriteLine("Fevereiro");break;
+      case "3": case "4": Console.WriteLine("Março");break;
+      case "5": case "6": Console.WriteLine("Abril");break;
+      case "7": case "8": Console.WriteLine("Maio");break;
+      case "9": case "0": Console.WriteLine("Junho");break;
+    }
+  }
+}
