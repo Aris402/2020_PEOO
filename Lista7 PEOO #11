@@ -1,0 +1,18 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite as notas do aluno");
+    string[] notas = Console.ReadLine().Split(' ');
+    int n1 = int.Parse(notas[0]);
+    int n2 = int.Parse(notas[1]);
+    int n3 = int.Parse(notas[2]);
+    int n4 = int.Parse(notas[3]);
+    int media = ((n1 * 2) + (n2 * 2) + (n3 * 3) + (n4 * 3))/10;
+    if (media >= 6) Console.WriteLine("Aprovado com media {0}", media);
+    if (media < 6) Console.WriteLine("Prova Final"); int pf = int.Parse(Console.ReadLine());
+    int media2 = (media + pf)/2;
+    if(media2 >= 6) Console.WriteLine("O aluno foi aprovado com media {0}", media2);
+    else Console.WriteLine("O aluno foi reprovado com media {0}", media2);
+  }
+}
