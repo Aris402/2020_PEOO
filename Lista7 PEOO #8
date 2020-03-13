@@ -1,0 +1,12 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite três valores reais separados por ponto e vírgulas:");
+    string[] reais = Console.ReadLine().Split(';');
+    double r1 = double.Parse(reais[0]);
+    double r2 = double.Parse(reais[1]);
+    double r3 = double.Parse(reais[2]);
+    Console.WriteLine("A soma entre os valores é {0:0.00}", r1 + r2 + r3);
+  }
+}
