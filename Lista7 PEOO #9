@@ -1,0 +1,12 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite uma frase com três palavras:");
+    string[] frase = Console.ReadLine().Split(' ');
+    string f1 = frase[0];
+    string f2 = frase[1];
+    string f3 = frase[2];
+    Console.WriteLine("{0}{1}{2}", f1[0], f2[0], f3[0]);
+  }
+}
