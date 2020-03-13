@@ -1,0 +1,12 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite três valores separados por vírgulas:");
+    string[] valores = Console.ReadLine().Split(",");
+    int v1 = int.Parse(valores[0]);
+    int v2 = int.Parse(valores[1]);
+    int v3 = int.Parse(valores[2]);
+    Console.WriteLine("O produto entre os valores é {0}", v1 * v2 * v3);
+  }
+}
