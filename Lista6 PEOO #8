@@ -1,0 +1,15 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite uma frase:");
+    string[] s = Console.ReadLine().Split(' ');
+    int pos = 0;
+    while (pos < s.Length){
+      string a = s[pos];
+      int b = a.Length - 1;
+      Console.Write(a[b]);
+      pos++;
+    }
+  }
+}
