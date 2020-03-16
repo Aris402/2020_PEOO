@@ -1,0 +1,13 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite uma frase:");
+    string s = Console.ReadLine();
+    while (s.IndexOf(" ") > 0) {
+      int p = s.IndexOf(" ");
+      s = s.Substring(p+1, s.Length - p - 1);
+      Console.WriteLine(s);
+    }
+  }
+}
