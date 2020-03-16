@@ -1,0 +1,27 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    int c1 = 0, c2 = 0, c3 = 0, c4 = 0, branco = 0, nulo = 0, total = 0, voto;
+    do {
+      Console.WriteLine("Digite o número do candidato");
+      voto = int.Parse(Console.ReadLine());
+      switch (voto) {
+      case 0: Console.WriteLine("Fim da votação");break;
+      case 1: c1++;total++;break;
+      case 2: c2++;total++;break;
+      case 3: c3++;total++;break;
+      case 4: c4++;total++;break;
+      case 5: branco++;total++;break;
+      case 6: nulo++;total++;break;
+    }
+    } while (voto != 0);
+    int winner = Math.Max(Math.Max(c1, c2), Math.Max(c3, c4));
+    if (winner == c1) Console.WriteLine("O total de votos foi {0} e o candidato vencedor foi o de número 1 com {1} votos", total, winner);
+    if (winner == c2) Console.WriteLine("O total de votos foi {0} e o candidato vencedor foi o de número 2 com {1} votos", total, winner);
+    if (winner == c3) Console.WriteLine("O total de votos foi {0} e o candidato vencedor foi o de número 3 com {1} votos", total, winner);
+    if (winner == c4) Console.WriteLine("O total de votos foi {0} e o candidato vencedor foi o de número 4 com {1} votos", total, winner);
+    Console.WriteLine("O candidato 1 teve {0}%, o 2 {1}%, o 3 {2}% e o 4 {3}%", (c1 * 100)/total, (c2 * 100)/total, (c3 * 100)/total, (c4 * 100)/total);
+    Console.WriteLine("Brancos somaram {0} e nulos {1}", branco, nulo);
+  }
+}
