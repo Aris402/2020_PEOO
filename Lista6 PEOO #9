@@ -1,0 +1,13 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Console.WriteLine("Digite uma frase:");
+    string s = Console.ReadLine();
+    int t = 1;
+    while (t < s.Length + 1){
+      Console.WriteLine("{0}-{1}", t, s);
+      t++;
+    }
+  }
+}
