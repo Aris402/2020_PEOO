@@ -1,0 +1,19 @@
+using System;
+
+class MainClass {
+  public static int Soma(int inicio, int fim){
+    int s;
+    s = 0;
+    for(int ii = inicio; ii <= fim; ii++){
+      s += ii;
+    }
+    return s;
+  }
+  public static void Main(string[] args){
+    int i, f, dec;
+    i = int.Parse(Console.ReadLine());
+    f = int.Parse(Console.ReadLine());
+    dec = Soma(i, f);
+    Console.WriteLine(dec);
+  }
+}
