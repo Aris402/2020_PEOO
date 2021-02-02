@@ -1,0 +1,15 @@
+using System;
+
+class MainClass {
+  public static double AreaCirculo(double raio){
+    double area;
+    area = 3.14 * (raio * raio);
+    return area;
+  }
+  public static void Main (string[] args){
+    double a, r;
+    r = double.Parse(Console.ReadLine());
+    a = AreaCirculo(r);
+    Console.WriteLine(a);
+  }
+}
