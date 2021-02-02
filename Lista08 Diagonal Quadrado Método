@@ -1,0 +1,16 @@
+using System;
+
+class MainClass {
+  public static double Diagonal(double b, double h){
+    double diag;
+    diag = Math.Sqrt((b * b) + (h * h));
+    return diag;
+  }
+  public static void Main (string[] args){
+    double basee, altura, d;
+    basee = double.Parse(Console.ReadLine());
+    altura = double.Parse(Console.ReadLine());
+    d = Diagonal(basee, altura);
+    Console.WriteLine($"{d:.00}");
+  }
+}
