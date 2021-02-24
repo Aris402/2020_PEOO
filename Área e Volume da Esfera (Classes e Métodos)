@@ -1,0 +1,27 @@
+using System;
+
+class MainClass {
+  public static void Main(){
+    Esfera e = new Esfera();
+    double r = double.Parse(Console.ReadLine());
+    e.SetRaio(r);
+    Console.WriteLine($"Área = {e.CalcArea():.00}\nVolume = {e.CalcVolume():.00}");
+  }
+}
+class Esfera{
+  private double raio;
+  public void SetRaio(double raio){
+    if(raio > 0) this.raio = raio;
+  }
+  public double GetRaio(){
+    return raio;
+  }
+  public double CalcArea(){
+    double area = 4 * 3.14 * (raio * raio);
+    return area;
+  }
+  public double CalcVolume(){
+    double volume = (4 * 3.14 *(raio * raio * raio))/3;
+    return volume;
+  }
+}
