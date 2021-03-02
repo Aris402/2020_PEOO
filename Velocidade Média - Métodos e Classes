@@ -1,0 +1,37 @@
+using System;
+
+class MainClass {
+  public static void Main(){
+    double distancia = double.Parse(Console.ReadLine());
+    double tempo = double.Parse(Console.ReadLine());
+    Viagem v = new Viagem(distancia, tempo);
+    Console.WriteLine(v.ToString());
+  }
+}
+class Viagem : Object{
+  double km, horas;
+  public Viagem(){ }
+  public Viagem(double km, double horas){
+    if(km > 0) this.km = km;
+    if(horas > 0) this.horas = horas;
+  }
+  public void SetDistancia(double km){
+    if(km > 0) this.km = km;
+  }
+  public void SetTempo(double horas){
+    if(horas > 0) this.horas = horas;
+  }
+  public double GetDistancia(){
+    return km;
+  }
+  public double GetTempo(){
+    return horas;
+  }
+  public double CalcVelocidade(){
+    double vel = km/horas;
+    return vel;
+  }
+  public override string ToString(){
+    return $"Velocidade média: {CalcVelocidade():.00}Km/h";
+  }
+}
