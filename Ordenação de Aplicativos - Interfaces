@@ -1,0 +1,141 @@
+using System;
+using System.Collections;
+class MainClass {
+  public static void Main (string[] args) {
+    Loja pstore = new Loja("PlayStore");
+    Aplicativo spot = new Aplicativo("Spotify", "Música", 21.99);
+    Aplicativo yt = new Aplicativo("Youtube Music", "Música", 19.99);
+    Aplicativo dzer = new Aplicativo("Deezer", "Música", 20.99);
+    pstore.Inserir(spot);
+    pstore.Inserir(yt);
+    pstore.Inserir(dzer);
+    Console.WriteLine("Por ordem alfabética:");
+    foreach(Aplicativo a in pstore.Listar()){
+      Console.WriteLine(a);
+    }
+    Console.WriteLine("\nPor ordem de preço (mais baratos):");
+    foreach(Aplicativo b in pstore.ListarPreco()){
+      Console.WriteLine(b);
+    }
+    for(int i = 0; i <= 15677; i++){
+      spot.Curtir();
+    }
+    for(int e = 0; e <= 8985; e++){
+      yt.Curtir();
+    }
+    for(int f = 0; f <= 4356; f++){
+      dzer.Curtir();
+    }
+    Console.WriteLine("\nOs mais curtidos:\n");
+    foreach(Aplicativo c in pstore.Top10MaisCurtidos()){
+      Console.WriteLine(c.Nome + $"\nCom {c.Curtidas} curtidas\n");
+    }
+  }
+  class Loja{
+    Aplicativo[] apps = new Aplicativo[100];
+    int k, quantidade;
+    string nome;
+    public Loja(string n){
+      this.nome = n;
+    }
+    public string Nome{
+      get => nome;
+      set => nome = value;
+    }
+    public int Qtd{
+      get => quantidade;
+      set => quantidade = value > 0 ? value: 0;
+    }
+    public void Inserir(Aplicativo app){
+      if(k < 100) apps[k] = app;
+      k++;
+    }
+    public void Excluir(Aplicativo app){
+      int indof = Array.IndexOf(apps, app);
+
+      if (indof != -1) {
+        for (int i = indof; i < Qtd-1; i++) {
+          apps[i] = apps[i+1];
+        }
+      }
+      k--;
+    }
+    public Aplicativo[] Listar(){
+      Aplicativo[] aplics = new Aplicativo[k];
+      Array.Copy(apps, aplics, k);
+      Array.Sort(aplics);
+      return aplics;
+    }
+    public Aplicativo[] Pesquisar(string cat){
+      Aplicativo[] pesquisa = new Aplicativo[k];
+      for(int i = 0; i <= apps.Length; i++){
+        if(apps[i].Categoria == cat){
+          pesquisa[i] = apps[i];
+        }
+      }
+      return pesquisa;
+    }
+    public Aplicativo[] ListarPreco(){
+      Aplicativo[] precos = new Aplicativo[k];
+      Array.Copy(apps, precos, k);
+      Array.Sort(precos, new PrecoComp());
+      return precos;
+    }
+    public Aplicativo[] Top10MaisCurtidos(){
+      Aplicativo[] curtidos = new Aplicativo[k];
+      Array.Copy(apps, curtidos, k);
+      Array.Sort(curtidos, new CurtidasComp());
+      Array.Reverse(curtidos);
+      return curtidos;
+    }
+  }
+  class Aplicativo : IComparable{
+    int curtidas;
+    string nome, categoria;
+    double preco;
+    public Aplicativo(string n, string c, double p){
+      this.nome = n;
+      this. categoria = c;
+      if(p > 0){this.preco = p;}
+    }
+    public string Nome{
+      get => nome;
+      set => nome = value; 
+    }
+    public string Categoria{
+      get => categoria;
+      set => categoria = value;
+    }
+    public double Preco{
+      get => preco;
+      set => preco = value;
+    }
+    public int Curtidas{
+      get => curtidas;
+    }
+    public void Curtir(){
+      curtidas++;
+    }
+    public int CompareTo(object obj){
+      Aplicativo y = (Aplicativo) obj;
+      return this.Nome.CompareTo(y.Nome);
+    }
+    public override string ToString(){
+      return $"\nNome: {Nome}\nCategoria: {Categoria}\nPreço: R${Preco}";
+    }
+  }
+  class PrecoComp : IComparer{
+    public int Compare(object x, object y){
+      Aplicativo a = (Aplicativo) x;
+      Aplicativo b = (Aplicativo) y;
+      return a.Preco.CompareTo(b.Preco);
+    }
+  }
+  class CurtidasComp : IComparer{
+    public int Compare(object x, object y){
+      Aplicativo a = (Aplicativo) x;
+      Aplicativo b = (Aplicativo) y;
+      return a.Curtidas.CompareTo(b.Curtidas);
+    }
+  }
+}
