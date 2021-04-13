@@ -1,0 +1,75 @@
+using System;
+using System.Collections;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Aluno a1 = new Aluno("Marcos", "20191011110014", DateTime.Parse("2003/12/28"));
+    Aluno a2 = new Aluno("Aristóteles", "20191011110005", DateTime.Parse("2003/05/01"));
+    Aluno a3 = new Aluno("Alexsander", "20191011110012", DateTime.Parse("2004/02/10"));
+    Aluno[] v = {a1, a2, a3};
+    Array.Sort(v);
+    Console.WriteLine("Alunos em ordem alfabética:\n");
+    foreach(Aluno a in v){
+      Console.WriteLine(a);
+    }
+    Array.Sort(v, new AlunoNascimentoComp());
+    Console.WriteLine("\nEm ordem de nascimento:\n");
+    foreach(Aluno b in v){
+      Console.WriteLine(b);
+    }
+    Array.Sort(v, new AlunoMatriculaComp());
+    Console.WriteLine("\nEm ordem de matrícula:\n");
+    foreach(Aluno c in v){
+      Console.WriteLine(c);
+    }
+  }
+  class Aluno : IComparable{
+    string nome, matricula;
+    DateTime nascimento;
+    public Aluno(string n, string m, DateTime nasc){ 
+      this.nome = n;
+      this.matricula = m;
+      this.nascimento = nasc;
+    }
+    public string Nome{
+      get => nome;
+      set => nome = value;
+    }
+
+    public string Matricula{
+      get => matricula;
+      set => matricula = value;
+    }
+    public DateTime Nascimento{
+      get => nascimento;
+      set => nascimento = value;
+    }
+    public int CompareTo(object obj){
+      Aluno x = this;
+      Aluno y = (Aluno) obj;
+      if (x.Nome.CompareTo(y.Nome) == 1){
+        return x.Nome.CompareTo(y.Nome);
+      }
+      else{
+        return x.Nome.CompareTo(y.Nome);
+      }
+    }
+    public override string ToString(){
+      return $"Nome: {Nome}\nMatrícula: {Matricula}\nNascimento: {Nascimento}";
+    }
+  }
+  class AlunoNascimentoComp : IComparer{
+    public int Compare(object x, object y){
+      Aluno a = (Aluno) x;
+      Aluno b = (Aluno) y;
+      return a.Nascimento.CompareTo(b.Nascimento);
+    }
+  }
+  class AlunoMatriculaComp : IComparer{
+    public int Compare(object x, object y){
+      Aluno a = (Aluno) x;
+      Aluno b = (Aluno) y;
+      return a.Matricula.CompareTo(b.Matricula);
+    }
+  }
+}
