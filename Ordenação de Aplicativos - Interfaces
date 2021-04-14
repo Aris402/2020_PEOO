@@ -1,5 +1,6 @@
-using System;
+sing System;
 using System.Collections;
+
 class MainClass {
   public static void Main (string[] args) {
     Loja pstore = new Loja("PlayStore");
@@ -9,7 +10,7 @@ class MainClass {
     pstore.Inserir(spot);
     pstore.Inserir(yt);
     pstore.Inserir(dzer);
-    Console.WriteLine("Por ordem alfabética:");
+    Console.WriteLine($"{pstore.Qtd} Apps estão disponíveis na {pstore.Nome}");
     foreach(Aplicativo a in pstore.Listar()){
       Console.WriteLine(a);
     }
@@ -30,6 +31,10 @@ class MainClass {
     foreach(Aplicativo c in pstore.Top10MaisCurtidos()){
       Console.WriteLine(c.Nome + $"\nCom {c.Curtidas} curtidas\n");
     }
+    Console.WriteLine($"Os apps da categoria Música:");
+    foreach(Aplicativo e in pstore.Pesquisar("Música")){
+      Console.WriteLine($"{e.Nome}\nR${e.Preco}\n");
+    }
   }
   class Loja{
     Aplicativo[] apps = new Aplicativo[100];
@@ -49,6 +54,7 @@ class MainClass {
     public void Inserir(Aplicativo app){
       if(k < 100) apps[k] = app;
       k++;
+      quantidade++;
     }
     public void Excluir(Aplicativo app){
       int indof = Array.IndexOf(apps, app);
@@ -68,7 +74,7 @@ class MainClass {
     }
     public Aplicativo[] Pesquisar(string cat){
       Aplicativo[] pesquisa = new Aplicativo[k];
-      for(int i = 0; i <= apps.Length; i++){
+      for(int i = 0; i <= k-1; i++){
         if(apps[i].Categoria == cat){
           pesquisa[i] = apps[i];
         }
