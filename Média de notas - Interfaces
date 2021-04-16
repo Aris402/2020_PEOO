@@ -1,0 +1,56 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    DisciplinaAnual dA = new DisciplinaAnual();
+    dA.Digitar();
+    dA.CalcMediaParcial();
+  }
+  interface IDisciplina{
+    string GetNome();
+    int CalcMediaParcial();
+    int CalcMediaFinal();
+  }
+  class DisciplinaAnual : IDisciplina{
+    string nome;
+    int nota1, nota2, nota3, nota4, notaFinal, media;
+    public void Digitar(){
+      Console.WriteLine("Digite o nome da matéria:");
+      nome = Console.ReadLine();
+      Console.WriteLine("Digite a primeira nota:");
+      nota1 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Digite a segunda nota:");
+      nota2 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Digite a terceira nota:");
+      nota3 = int.Parse(Console.ReadLine());
+      Console.WriteLine("Digite a quarta nota:");
+      nota4 = int.Parse(Console.ReadLine());
+    }
+    public string GetNome(){
+      return nome;
+    }
+    public int CalcMediaParcial(){
+      media = (nota1 + nota2 + nota3 + nota4)/4;
+      if(media >= 60){
+        Console.WriteLine($"Parabéns! Aluno aprovado em {nome} com nota {media}");
+      }
+      else{
+        Console.WriteLine($"Aluno reprovado com nota {media} abaixo da média");
+        CalcMediaFinal();
+      }
+      return media;
+    }
+    public int CalcMediaFinal(){
+      Console.WriteLine("Digite a nota da prova final:");
+      int final = int.Parse(Console.ReadLine());
+      notaFinal = (media + final)/2;
+      if(notaFinal >= 60){
+        Console.WriteLine($"Aluno aprovado na recuperação com {notaFinal}. Parabéns!");
+      }
+      else{
+        Console.WriteLine($"Aluno reprovado com nota {notaFinal} abaixo da média.");
+      }
+      return notaFinal;
+    }
+  }
+}
