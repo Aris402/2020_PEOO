@@ -1,0 +1,56 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Fibonacci f = new Fibonacci();
+    PA prog = new PA();
+    Console.WriteLine("\nSequência de Fibonnaci:");
+    Console.Write($"{f.Iniciar()} ");
+    for(int i = 0; i <= 10; i++){
+      Console.Write($"{f.Proximo()} ");
+    }
+    prog.Digitar();
+    Console.WriteLine("Sua PA:");
+    Console.Write($"{prog.Iniciar()} ");
+    for(int b = 0; b <= 10; b++){
+      Console.Write($"{prog.Proximo()} ");
+    }
+  }
+  interface ISequencia{
+    int Iniciar();
+    int Proximo();
+  }
+  class Fibonacci : ISequencia{
+    int[] fib = new int[100];
+    int s = 1;
+    public int Iniciar(){
+      fib[0] = 0;
+      return fib[0];
+    }
+    public int Proximo(){
+      fib[1] = 1;
+      fib[s + 1] = fib[s - 1] + fib[s];
+      s++;
+      return fib[s - 1];
+    }
+  }
+  class PA : ISequencia{
+    int primeiroElemento, razao, s = 0;
+    int[] pa = new int[100];
+    public void Digitar(){
+      Console.WriteLine("\nDigite o primeiro elemento da PA:");
+      primeiroElemento = int.Parse(Console.ReadLine());
+      Console.WriteLine("Digite a razão da PA:");
+      razao = int.Parse(Console.ReadLine());
+    }
+    public int Iniciar(){
+      pa[0] = primeiroElemento;
+      return pa[0];
+    }
+    public int Proximo(){
+      pa[s + 1] = razao + pa[s];
+      s++;
+      return pa[s];
+    }
+  }
+}
