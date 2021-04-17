@@ -1,0 +1,73 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Bingo b = new Bingo();
+    Mega m = new Mega();
+    b.Digitar();
+    int seila = 1;
+    for(int i = 0; i <= b.Bolas-1; i++){
+      b.Proximo();
+    }
+    foreach(int a in b.Sorteados()){
+      Console.WriteLine($"Número sorteado {seila}: {a}");
+      seila++;
+    }
+    Console.WriteLine("\nNúmeros da sorte da Mega:");
+    for(int sla = 0; sla <= 5; sla++){
+      m.Proximo();
+    }
+    foreach(int mega in m.Sorteados()){
+      Console.Write($"{mega} ");
+    }
+  }
+  interface ISorteio{
+    int Proximo();
+    int[] Sorteados();
+  }
+  class Bingo : ISorteio{
+    int numBolas, k;
+    int[] sorteio = new int[100];
+    public void Digitar(){
+      Console.WriteLine("Digite o número de bolas:");
+      numBolas = int.Parse(Console.ReadLine());
+    }
+    public int Bolas{
+      get => numBolas;
+    }
+    public int Proximo(){
+      Random num = new Random();
+      int aleatorio = num.Next(1, numBolas + 1);
+      Inserir(aleatorio);
+      return aleatorio;
+    }
+    public void Inserir(int i){
+      if (k < 100) sorteio[k] = i;
+      k++;
+    }
+    public int[] Sorteados(){
+      int[] sort = new int[numBolas];
+      Array.Copy(sorteio, sort, numBolas);
+      return sort;
+    }
+  }
+  class Mega : ISorteio{
+    int[] valores = new int[100];
+    int k;
+    public int Proximo(){
+      Random num = new Random();
+      int aleatorio = num.Next(1, 61);
+      Inserir(aleatorio);
+      return aleatorio;
+    }
+    public void Inserir(int i){
+      if(k < 100) valores[k] = i;
+      k++;
+    }
+    public int[] Sorteados(){
+      int[] sorteados = new int[k];
+      Array.Copy(valores, sorteados, k);
+      return sorteados;
+    }
+  }
+}
