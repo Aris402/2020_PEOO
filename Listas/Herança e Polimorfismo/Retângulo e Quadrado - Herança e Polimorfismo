@@ -1,0 +1,41 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Retangulo r = new Retangulo(5.5, 10.5);
+    Quadrado q = new Quadrado(5);
+    Console.WriteLine(r);
+    Console.WriteLine(q);
+  }
+  class Retangulo{
+    double bas, altura;
+    public Retangulo(double b, double h){
+      bas = b;
+      altura = h;
+    }
+    public double GetBase(){
+      return bas;
+    }
+    public double GetAltura(){
+      return altura;
+    }
+    public double CalcArea(){
+      return bas * altura;
+    }
+    public double CalcDiagonal(){
+      return Math.Sqrt((bas * bas) + (altura * altura));
+    }
+    public override string ToString(){
+      return $"A base do retângulo é {bas}, a altura {altura}\nA área é {CalcArea():.00}\nA diagonal é {CalcDiagonal():.00}";
+    }
+  }
+  class Quadrado : Retangulo{
+    public Quadrado(double b)
+    : base(b, b)
+    {
+    }
+    public override string ToString(){
+      return $"\nA área do quadrado é {CalcArea():.00}\nA diagonal é {CalcDiagonal():.00}";
+    }
+  }
+}
