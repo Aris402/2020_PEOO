@@ -1,0 +1,37 @@
+sing System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Frete f1 = new Frete(5, 20);
+    Frete f2 = new FreteExpresso(5, 20, 1565);
+    Console.WriteLine(f1);
+    Console.WriteLine(f2);
+  }
+  class Frete{
+    private double distancia, peso;
+    public virtual decimal ValorFrete{
+      get => (decimal)((distancia * peso)/0.01);
+    }
+    public Frete(double d, double p){
+      distancia = d;
+      peso = p;
+    }
+    public override string ToString(){
+      return $"O valor do frete será de R${ValorFrete:.00}";
+    }
+  }
+  class FreteExpresso : Frete{
+    private decimal seguro;
+    public FreteExpresso(double d, double p, decimal s)
+    : base(d, p)
+    {
+      seguro = s;  
+    }
+    public override decimal ValorFrete{
+      get => (2 * base.ValorFrete) + seguro * 1/100;
+    }
+    public override string ToString(){
+      return $"O valor do frete expresso será R${ValorFrete:.00}";
+    }
+  }
+}
