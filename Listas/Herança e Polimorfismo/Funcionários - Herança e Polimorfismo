@@ -1,0 +1,117 @@
+using System;
+using System.Collections.Generic;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Construtora c = new Construtora();
+    Engenheiro e1 = new Engenheiro("Fulano", "fulano@gmail.com", "(84)99965-8763");
+    e1.SetCrea("Engenheiro Mecânico");
+    Engenheiro e2 = new Engenheiro("Beltrano", "beltrano@hotmail.com", "(84)99874-3512");
+    e2.SetCrea("Engenheiro Químico");
+    Motorista m1 = new Motorista("Sicrano", "sicrano@gmail.com", "(84)99748-2731");
+    m1.SetCnh("Motorista de Ônibus");
+    Motorista m2 = new Motorista("Zutano", "zutano@gmail.com", "(84)99936-2775");
+    m2.SetCnh("Motorista de Carro e Moto");
+    c.Inserir(e1);
+    c.Inserir(e2);
+    c.Inserir(m1);
+    c.Inserir(m2);
+    foreach(Funcionario f in c.Funcionarios()){
+      Console.WriteLine(f);
+    }
+    Console.WriteLine("Engenheiros:\n");
+    foreach(Engenheiro e in c.Engenheiros()){
+      Console.WriteLine(e);
+    }
+    Console.WriteLine("Motoristas:\n");
+    foreach(Motorista m in c.Motoristas()){
+      Console.WriteLine(m);
+    }
+  }
+  class Construtora{
+    List<Funcionario> funcios = new List<Funcionario>();
+    public void Inserir(Funcionario f){
+      funcios.Add(f);
+    }
+    public List<Funcionario> Funcionarios(){
+      return funcios;
+    }
+    public List<Engenheiro> Engenheiros(){
+      List<Engenheiro> engs = new List<Engenheiro>();
+      for(int i = 0; i <= funcios.Count - 1; i++){
+        if(funcios[i] is Engenheiro) engs.Add(funcios[i] as Engenheiro);
+      }
+      return engs;
+    }
+    public List<Motorista> Motoristas(){
+      List<Motorista> mot = new List<Motorista>();
+      for(int i = 0; i <= funcios.Count - 1; i++){
+        if(funcios[i] is Motorista) mot.Add(funcios[i] as Motorista);
+      }
+      return mot;
+    }
+  }
+  class Funcionario : Construtora{
+    string nome, email, fone;
+    public Funcionario(string n, string e, string f){ }
+    public void SetNome(string n){
+      nome = n;
+    }
+    public void SetEmail(string e){
+      email = e;
+    }
+    public void SetFone(string f){
+      fone = f;
+    }
+    public string GetNome(){
+      return nome;
+    }
+    public string GetEmail(){
+      return email;
+    }
+    public string GetFone(){
+      return fone;
+    }
+    public override string ToString(){
+      return $"{nome}\n{email}\n{fone}";
+    }
+  }
+  class Engenheiro : Funcionario{
+    string crea;
+    public Engenheiro(string n, string e, string f)
+    : base(n, e, f)
+    {
+      base.SetNome(n);
+      base.SetEmail(e);
+      base.SetFone(f);
+    }
+    public void SetCrea(string c){
+      crea = c;
+    }
+    public string GetCrea(){
+      return crea;
+    }
+    public override string ToString(){
+      return $"{base.GetNome()}\n{GetCrea()}\n{base.GetEmail()}\n{base.GetFone()}\n";
+    }
+  }
+  class Motorista : Funcionario{
+    string cnh;
+    public Motorista(string n, string e, string f)
+    : base(n, e, f)
+    {
+      base.SetNome(n);
+      base.SetEmail(e);
+      base.SetFone(f);
+    }
+    public void SetCnh(string c){
+      cnh = c;
+    }
+    public string GetCnh(){
+      return cnh;
+    }
+    public override string ToString(){
+      return$"{base.GetNome()}\n{GetCnh()}\n{base.GetEmail()}\n{base.GetFone()}\n";
+    }
+  }
+}
