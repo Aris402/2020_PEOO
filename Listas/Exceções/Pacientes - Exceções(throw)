@@ -1,0 +1,38 @@
+using System;
+
+class MainClass {
+  public static void Main (string[] args) {
+    Paciente p = new Paciente("José", "705.408.834.42", "(84)99275-4097", DateTime.Parse("1971-05-26"));
+    Paciente p2 = new Paciente("Aristóteles", "415.332.484.15", "(84)99773-1293", DateTime.Parse("2003-01-05"));
+    Paciente p3 = new Paciente("Danielle", "824.241.315.85", "(84)99972-9045", DateTime.Parse("1977-07-23"));
+    Console.WriteLine(p.ToString() + "\n");
+    Console.WriteLine(p2.ToString() + "\n");
+    Console.WriteLine(p3.ToString());
+  }
+  class Paciente{
+    string nome, cpf, telefone;
+    int ano, mes;
+    DateTime nascimento;
+    public Paciente(string n, string c, string t, DateTime d){
+      nome = n;
+      cpf = c;
+      telefone = t;
+      if(d.Year > DateTime.Now.Year) throw new ArgumentOutOfRangeException("Data inválida");
+      else if(d.Year == DateTime.Now.Year && d.Month > DateTime.Now.Month) throw new ArgumentOutOfRangeException("Data inválida");
+      else if(d.Year == DateTime.Now.Year && d.Month >= DateTime.Now.Month && d.Day >= DateTime.Now.Day) throw new ArgumentOutOfRangeException("Data inválida");
+      else nascimento = d;
+      ano = DateTime.Now.Year - nascimento.Year;
+      mes = DateTime.Now.Month - nascimento.Month;
+      if(mes < 0){
+        mes = 12 - (mes * -1);
+        ano -= 1;
+      }
+    }
+    public string Idade{
+      get => $"{ano} ano(s) e {mes} mês(es)";
+    }
+    public override string ToString(){
+      return $"{nome}\n{cpf}\n{telefone}\n{Idade}";
+    }
+  }
+}
